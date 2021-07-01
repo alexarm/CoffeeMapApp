@@ -10,8 +10,6 @@ import GoogleMaps
 
 class ViewController: UIViewController {
     
-    
-    
     let locationManager = CLLocationManager()
     
     @IBOutlet var coffeeHeightConstraint: NSLayoutConstraint!
@@ -26,25 +24,17 @@ class ViewController: UIViewController {
     @IBOutlet var coffeeShopInstagramText: UITextView!
     @IBOutlet var coffeeShopImage: UIImageView!
     
-    var coffeeShops: [CoffeeShop] = CoffeeShop.all
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-
-        coffeeDetailsView.layer.cornerRadius = 10
-        coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: 448)
-        coffeeDetailsView.isHidden = true
-        
-        coffeShopDetailsNavigationBar.layer.cornerRadius = 10
-        coffeShopDetailsNavigationBar.clipsToBounds = true
-        coffeShopDetailsNavigationBar.isTranslucent = true
-        coffeShopDetailsNavigationBar.setBackgroundImage(UIImage(), for: .default)
-        coffeShopDetailsNavigationBar.shadowImage = UIImage()
         
         locationManager.delegate = self
         mapMainView.delegate = self
-
+        
+        setupCoffeeDetailsView()
+        setupNavigationBar()
+        setupGestureRecognizers()
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
             mapMainView.isMyLocationEnabled = true
@@ -52,27 +42,38 @@ class ViewController: UIViewController {
         } else {
             locationManager.requestWhenInUseAuthorization()
         }
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         addCoffeeShopsToMap()
-        
+    }
+    
+    func setupCoffeeDetailsView() {
+        coffeeDetailsView.layer.cornerRadius = 10
+        coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: view.frame.height)
+        coffeeDetailsView.isHidden = true
+    }
+    
+    func setupNavigationBar() {
+        coffeShopDetailsNavigationBar.layer.cornerRadius = 10
+        coffeShopDetailsNavigationBar.clipsToBounds = true
+        coffeShopDetailsNavigationBar.isTranslucent = true
+        coffeShopDetailsNavigationBar.setBackgroundImage(UIImage(), for: .default)
+        coffeShopDetailsNavigationBar.shadowImage = UIImage()
+    }
+    
+    func setupGestureRecognizers() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCloseDetails(_:)))
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeDownDetails(_:)))
         mapMainView.isUserInteractionEnabled = true
         coffeeDetailsView.addGestureRecognizer(tapGesture)
-        coffeeDetailsView.addGestureRecognizer(panGesture)
         
         let openLinkTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openUrlByTap(_:)))
         coffeeShopInstagramText.addGestureRecognizer(openLinkTapGestureRecognizer)
     }
     
-    func parseCoffeeShops() {
-        let jsonData = coffeeShopsJSON.data(using: .utf16)!
-        let shops = try! JSONDecoder().decode(Shops.self, from: jsonData)
-        coffeeShops = shops.coffeeShops
-    }
-    
     func addCoffeeShopsToMap() {
-        for coffeeShop in coffeeShops {
+        for coffeeShop in CoffeeShopsInfoController.coffeeShops {
             let coffeeLatitude = CLLocationDegrees(coffeeShop.location[0])
             let coffeeLongtitude = CLLocationDegrees(coffeeShop.location[1])
             let marker = GMSMarker()
@@ -81,11 +82,9 @@ class ViewController: UIViewController {
             marker.map = mapMainView
         }
     }
-
+    
     func showCoffeeShopDescription(from marker: GMSMarker) {
-//        coffeeDetailsView.alpha = 0.0
-        
-        let chosenCoffeeshop = coffeeShops.filter {$0.name == marker.title}.first
+        let chosenCoffeeshop = CoffeeShopsInfoController.coffeeShops.filter {$0.name == marker.title}.first
         coffeShopDetailsNavigationBar.topItem?.title = chosenCoffeeshop?.name
         coffeeShopDescriptionLabel.text = chosenCoffeeshop?.description
         
@@ -100,8 +99,8 @@ class ViewController: UIViewController {
             coffeeShopInstagramText.isUserInteractionEnabled = true
             coffeeShopInstagramText.attributedText = instgramLink
         }
-    
-        coffeeShopAddressLabel.text = chosenCoffeeshop?.adress
+        
+        coffeeShopAddressLabel.text = chosenCoffeeshop?.address
         if let discount = chosenCoffeeshop?.discount {
             if !discount.isEmpty {
                 coffeeShopDiscountLabel.isHidden = false
@@ -123,10 +122,12 @@ class ViewController: UIViewController {
             self.coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: 0)
         }, completion: nil)
     }
-
+    
     @IBAction func handleCloseDetails(_ sender: UITapGestureRecognizer) {
+        let height = view.frame.height / 2
+        
         UIView.animate(withDuration: 0.2, animations: {
-            self.coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: 448)
+            self.coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: height)
             self.coffeeDetailsView.alpha = 0.0
         }, completion: {_ in
             self.coffeeDetailsView.isHidden = true
@@ -134,38 +135,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func closeDetailsButtonTapped(_ sender: UIBarButtonItem) {
+        let height = view.frame.height / 2
+        
         UIView.animate(withDuration: 0.2, animations: {
-            self.coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: 448)
+            self.coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: height)
             self.coffeeDetailsView.alpha = 0.0
         }, completion: {_ in
             self.coffeeDetailsView.isHidden = true
         })
     }
-    
-    @IBAction func swipeDownDetails(_ recognizer: UIPanGestureRecognizer) {
-//        if recognizer.state == .changed {
-        let translation = recognizer.translation(in: self.coffeeDetailsView)
-        
-        if coffeeDetailsView.frame.origin.y + translation.y < 448 {
-            return
-        }
-        
-        recognizer.view?.center = CGPoint(x: coffeeDetailsView.center.x, y: coffeeDetailsView.center.y + translation.y)
-        recognizer.setTranslation(CGPoint.zero, in: self.coffeeDetailsView)
-
-        if coffeeDetailsView.frame.origin.y > 700 {
-                UIView.animate(withDuration: 1.0, animations: {
-                    self.coffeeDetailsView.transform = CGAffineTransform(translationX: 0, y: self.coffeeDetailsView.frame.origin.y)
-                    self.coffeeDetailsView.alpha = 0.0
-                }, completion: {_ in
-//                    self.coffeeDetailsView.isHidden = true
-                    self.coffeeDetailsView.center = CGPoint(x: self.coffeeDetailsView.center.x, y: 448 + 224)
-                })
-            }
-//        }
-        
-    }
-    
     
     @objc func openUrlByTap(_ recognizer: UITapGestureRecognizer) {
         let instagramTextView = recognizer.view as! UITextView
@@ -173,7 +151,7 @@ class ViewController: UIViewController {
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         }
     }
-
+    
 }
 
 extension ViewController: GMSMapViewDelegate {
@@ -191,15 +169,15 @@ extension ViewController: CLLocationManagerDelegate {
         mapMainView.isMyLocationEnabled = true
         mapMainView.settings.myLocationButton = true
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
-
+        
         mapMainView.camera = GMSCameraPosition( target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-      print(error)
+        print(error)
     }
 }
 
@@ -214,17 +192,5 @@ extension UIImageView {
                 }
             }
         }
-//        let task = URLSession.shared.dataTask(with: url) {
-//            (data, response, error) in
-//            if let data = data {
-//                if let image = UIImage(data: data) {
-//                    self.image = image
-//                    self.isHidden = false
-//                }
-//            } else {
-//                self.isHidden = true
-//            }
-//        }
-//        task.resume()
     }
 }

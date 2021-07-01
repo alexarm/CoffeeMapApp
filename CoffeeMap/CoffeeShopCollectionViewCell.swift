@@ -14,13 +14,14 @@ class CoffeeShopCollectionViewCell: UICollectionViewCell {
     @IBOutlet var addressLabel: UILabel!
     
     func setupCell(coffeeShop: CoffeeShop) {
+        self.layer.cornerRadius = 10
+        coffeeShopImage.layer.cornerRadius = 10
+        
         let imageUrl = coffeeShop.image
         let encodedString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         coffeeShopImage.load(url: URL(string: encodedString!)!)
-        
-        
         titleLabel.text = coffeeShop.name
-        addressLabel.text = coffeeShop.adress
+        addressLabel.text = coffeeShop.address
     }
     
 }
