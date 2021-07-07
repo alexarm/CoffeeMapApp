@@ -12,7 +12,7 @@
 		DBC66379268CAD950050144B /* CoffeeShopsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC66378268CAD950050144B /* CoffeeShopsInfoController.swift */; };
 		DBCBF1B1261F235F00D2A11C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBF1B0261F235F00D2A11C /* AppDelegate.swift */; };
 		DBCBF1B3261F235F00D2A11C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBF1B2261F235F00D2A11C /* SceneDelegate.swift */; };
-		DBCBF1B5261F235F00D2A11C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBF1B4261F235F00D2A11C /* ViewController.swift */; };
+		DBCBF1B5261F235F00D2A11C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCBF1B4261F235F00D2A11C /* MapViewController.swift */; };
 		DBCBF1B8261F235F00D2A11C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCBF1B6261F235F00D2A11C /* Main.storyboard */; };
 		DBCBF1BA261F236000D2A11C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBCBF1B9261F236000D2A11C /* Assets.xcassets */; };
 		DBCBF1BD261F236000D2A11C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBCBF1BB261F236000D2A11C /* LaunchScreen.storyboard */; };
@@ -41,7 +41,7 @@
 		DBCBF1AD261F235F00D2A11C /* CoffeeMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBCBF1B0261F235F00D2A11C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBCBF1B2261F235F00D2A11C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DBCBF1B4261F235F00D2A11C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBCBF1B4261F235F00D2A11C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DBCBF1B7261F235F00D2A11C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBCBF1B9261F236000D2A11C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBCBF1BC261F236000D2A11C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			children = (
 				DBCBF1B0261F235F00D2A11C /* AppDelegate.swift */,
 				DBCBF1B2261F235F00D2A11C /* SceneDelegate.swift */,
-				DBCBF1B4261F235F00D2A11C /* ViewController.swift */,
+				DBCBF1B4261F235F00D2A11C /* MapViewController.swift */,
 				DBCBF1B6261F235F00D2A11C /* Main.storyboard */,
 				DBCBF1B9261F236000D2A11C /* Assets.xcassets */,
 				DBCBF1BB261F236000D2A11C /* LaunchScreen.storyboard */,
@@ -228,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB92A0F268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift in Sources */,
-				DBCBF1B5261F235F00D2A11C /* ViewController.swift in Sources */,
+				DBCBF1B5261F235F00D2A11C /* MapViewController.swift in Sources */,
 				DBCBF1C6261F23CF00D2A11C /* CoffeeShops.swift in Sources */,
 				DBCBF1B1261F235F00D2A11C /* AppDelegate.swift in Sources */,
 				DBB92A1126847BBC0072B7BA /* CoffeeShopCollectionViewCell.swift in Sources */,

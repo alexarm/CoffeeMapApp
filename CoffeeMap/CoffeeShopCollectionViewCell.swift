@@ -9,6 +9,7 @@ import UIKit
 
 class CoffeeShopCollectionViewCell: UICollectionViewCell {
     
+    let coffeeShopInfroController = CoffeeShopsInfoController()
     @IBOutlet var coffeeShopImage: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
@@ -18,8 +19,17 @@ class CoffeeShopCollectionViewCell: UICollectionViewCell {
         coffeeShopImage.layer.cornerRadius = 10
         
         let imageUrl = coffeeShop.image
-        let encodedString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        coffeeShopImage.load(url: URL(string: encodedString!)!)
+        let encodedString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let encodedUrl = URL(string: encodedString)!
+        
+        coffeeShopInfroController.fetchImage(from: encodedUrl) { image in
+            let image = image ?? UIImage(systemName: "photo")
+
+            DispatchQueue.main.async {
+                self.coffeeShopImage.image = image
+            }
+        }
+        
         titleLabel.text = coffeeShop.name
         addressLabel.text = coffeeShop.address
     }

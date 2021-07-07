@@ -8,8 +8,9 @@
 import UIKit
 import GoogleMaps
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
+    let coffeeShopInfoController = CoffeeShopsInfoController()
     let locationManager = CLLocationManager()
     
     @IBOutlet var coffeeHeightConstraint: NSLayoutConstraint!
@@ -35,6 +36,16 @@ class ViewController: UIViewController {
         setupNavigationBar()
         setupGestureRecognizers()
         
+        coffeeShopInfoController.fetchCoffeeShopsInfo { (result) in
+            switch result {
+            case .success(let coffeeShops):
+                self.addCoffeeShopsToMap(coffeeShops: coffeeShops)
+            case .failure(let error):
+                print(error)
+                self.addCoffeeShopsToMap(coffeeShops: [])
+            }
+        }
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
             mapMainView.isMyLocationEnabled = true
@@ -42,11 +53,8 @@ class ViewController: UIViewController {
         } else {
             locationManager.requestWhenInUseAuthorization()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        addCoffeeShopsToMap()
+        
+        print("finish load")
     }
     
     func setupCoffeeDetailsView() {
@@ -72,14 +80,16 @@ class ViewController: UIViewController {
         coffeeShopInstagramText.addGestureRecognizer(openLinkTapGestureRecognizer)
     }
     
-    func addCoffeeShopsToMap() {
-        for coffeeShop in CoffeeShopsInfoController.coffeeShops {
-            let coffeeLatitude = CLLocationDegrees(coffeeShop.location[0])
-            let coffeeLongtitude = CLLocationDegrees(coffeeShop.location[1])
-            let marker = GMSMarker()
-            marker.title = coffeeShop.name
-            marker.position = CLLocationCoordinate2D(latitude: coffeeLatitude, longitude: coffeeLongtitude)
-            marker.map = mapMainView
+    func addCoffeeShopsToMap(coffeeShops: [CoffeeShop]) {
+        DispatchQueue.main.async {
+            for coffeeShop in coffeeShops {
+                let coffeeLatitude = CLLocationDegrees(coffeeShop.location[0])
+                let coffeeLongtitude = CLLocationDegrees(coffeeShop.location[1])
+                let marker = GMSMarker()
+                marker.title = coffeeShop.name
+                marker.position = CLLocationCoordinate2D(latitude: coffeeLatitude, longitude: coffeeLongtitude)
+                marker.map = self.mapMainView
+            }
         }
     }
     
@@ -109,10 +119,17 @@ class ViewController: UIViewController {
                 coffeeShopDiscountLabel.isHidden = true
             }
         }
-        
         if let imageUrl = chosenCoffeeshop?.image {
-            let encodedString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            coffeeShopImage.load(url: URL(string: encodedString!)!)
+            let encodedString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let encodedUrl = URL(string: encodedString)!
+            
+            coffeeShopInfoController.fetchImage(from: encodedUrl) { image in
+                let image = image ?? UIImage(systemName: "photo")
+                
+                DispatchQueue.main.async {
+                    self.coffeeShopImage.image = image
+                }
+            }
         }
         
         coffeeDetailsView.isHidden = false
@@ -154,14 +171,14 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: GMSMapViewDelegate {
+extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         showCoffeeShopDescription(from: marker)
         return true
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else { return }
         
@@ -178,19 +195,5 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
-    }
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
     }
 }

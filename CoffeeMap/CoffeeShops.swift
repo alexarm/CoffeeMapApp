@@ -9,7 +9,6 @@ import Foundation
 
 
 struct CoffeeShop: Codable {
-    var n: Int
     var name: String
     var location: [Float]
     var address: String
@@ -17,11 +16,9 @@ struct CoffeeShop: Codable {
     var instagram: String
     var description: String
     var discount: String
-    var tag: String
     var toGo: String
     
     enum CodingKeys: String, CodingKey {
-        case n
         case name
         case location
         case address = "adress"
@@ -29,7 +26,6 @@ struct CoffeeShop: Codable {
         case instagram
         case description
         case discount
-        case tag
         case toGo = "togo"
     }
 }
