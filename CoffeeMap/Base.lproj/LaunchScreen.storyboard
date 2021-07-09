@@ -17,15 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VL1-SD-CY5">
-                                <rect key="frame" x="157" y="397.5" width="100" height="100"/>
+                                <rect key="frame" x="132" y="373.5" width="150" height="148.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="QG1-kT-CT8"/>
+                                    <constraint firstAttribute="height" constant="150" id="wzs-qn-XaB"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="VL1-SD-CY5" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="I83-zE-pGO"/>
-                            <constraint firstItem="VL1-SD-CY5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="353" id="ZSq-5e-hr8"/>
-                            <constraint firstItem="VL1-SD-CY5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="157" id="pr2-Wl-48p"/>
                             <constraint firstItem="VL1-SD-CY5" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="w2f-J5-J4p"/>
                         </constraints>
                     </view>
