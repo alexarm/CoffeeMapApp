@@ -8,12 +8,12 @@
 import UIKit
 import GoogleMaps
 
+//MARK: MapViewController
+
 class MapViewController: UIViewController {
     
     let coffeeShopInfoController = CoffeeShopsInfoController()
     let locationManager = CLLocationManager()
-    
-    @IBOutlet var coffeeHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet var mapMainView: GMSMapView!
     
@@ -54,7 +54,6 @@ class MapViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
         
-        print("finish load")
     }
     
     func setupCoffeeDetailsView() {
@@ -100,14 +99,16 @@ class MapViewController: UIViewController {
         
         if let instagram = chosenCoffeeshop?.instagram {
             let instagramOpenText = "Открыть в Instagram"
-            let instgramLink = NSMutableAttributedString(string: instagramOpenText)
-            instgramLink.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: instagramOpenText.count))
+            
+            let instagramLink = NSMutableAttributedString(string: instagramOpenText)
+            instagramLink.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: instagramOpenText.count))
             let style = NSMutableParagraphStyle()
             style.alignment = .center
-            instgramLink.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: instagramOpenText.count))
-            instgramLink.addAttribute(.link, value: instagram, range: NSRange(location: 0, length: instagramOpenText.count))
+            instagramLink.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: instagramOpenText.count))
+            instagramLink.addAttribute(.link, value: instagram, range: NSRange(location: 0, length: instagramOpenText.count))
+            
             coffeeShopInstagramText.isUserInteractionEnabled = true
-            coffeeShopInstagramText.attributedText = instgramLink
+            coffeeShopInstagramText.attributedText = instagramLink
         }
         
         coffeeShopAddressLabel.text = chosenCoffeeshop?.address
@@ -171,12 +172,16 @@ class MapViewController: UIViewController {
     
 }
 
+//MARK: GMSMapViewDelegate
+
 extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         showCoffeeShopDescription(from: marker)
         return true
     }
 }
+
+//MARK: CLLocationManagerDelegate
 
 extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

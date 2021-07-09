@@ -136,39 +136,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Agi-TN-MQ1">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="Agi-TN-MQ1">
                             <size key="itemSize" width="406" height="173"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CoffeeShop" id="Gse-fg-89p" customClass="CoffeeShopCollectionViewCell" customModule="CoffeeMap" customModuleProvider="target">
-                                <rect key="frame" x="4" y="0.0" width="406" height="173"/>
+                                <rect key="frame" x="25" y="0.0" width="364" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bTK-ih-JdZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="406" height="173"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="364" height="173"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7c7-Pp-P5G">
-                                            <rect key="frame" x="8" y="10" width="390" height="153"/>
+                                            <rect key="frame" x="8" y="10" width="348" height="153"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ncv-vQ-hCU">
-                                                    <rect key="frame" x="0.0" y="2.5" width="152.5" height="147.5"/>
+                                                    <rect key="frame" x="0.0" y="2.5" width="136" height="147.5"/>
                                                     <imageReference key="image" image="photo" catalog="system" symbolScale="small"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0HX-oh-IIu">
-                                                    <rect key="frame" x="160.5" y="0.0" width="229.5" height="153"/>
+                                                    <rect key="frame" x="144" y="0.0" width="204" height="153"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ttitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-sU-jAV">
-                                                            <rect key="frame" x="0.0" y="0.0" width="229.5" height="74"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="204" height="74"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Address" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsi-5F-RYw">
-                                                            <rect key="frame" x="0.0" y="79" width="229.5" height="74"/>
+                                                            <rect key="frame" x="0.0" y="79" width="204" height="74"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -189,7 +189,7 @@
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="0.49278249172185429" colorSpace="custom" customColorSpace="sRGB"/>
-                                <size key="customSize" width="406" height="173"/>
+                                <size key="customSize" width="364" height="173"/>
                                 <connections>
                                     <outlet property="addressLabel" destination="Bsi-5F-RYw" id="gEE-Fh-teC"/>
                                     <outlet property="coffeeShopImage" destination="Ncv-vQ-hCU" id="yUH-op-nLq"/>
@@ -203,6 +203,9 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="List" image="list.bullet" catalog="system" id="OPD-sn-dcJ"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="Agi-TN-MQ1" id="t4H-Yk-xIQ"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqh-q1-yJR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct CoffeeShop: Codable {
     var name: String
     var location: [Float]

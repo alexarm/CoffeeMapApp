@@ -69,6 +69,25 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DBC6637A2695CCD20050144B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DBCBF1B4261F235F00D2A11C /* MapViewController.swift */,
+				DBB92A0E268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift */,
+				DBC66378268CAD950050144B /* CoffeeShopsInfoController.swift */,
+				DBB92A1026847BBC0072B7BA /* CoffeeShopCollectionViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DBC6637B2695CD140050144B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DBCBF1C5261F23CF00D2A11C /* CoffeeShops.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DBCBF1A4261F235F00D2A11C = {
 			isa = PBXGroup;
 			children = (
@@ -90,17 +109,14 @@
 		DBCBF1AF261F235F00D2A11C /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
+				DBC6637B2695CD140050144B /* Model */,
+				DBC6637A2695CCD20050144B /* Controller */,
 				DBCBF1B0261F235F00D2A11C /* AppDelegate.swift */,
 				DBCBF1B2261F235F00D2A11C /* SceneDelegate.swift */,
-				DBCBF1B4261F235F00D2A11C /* MapViewController.swift */,
 				DBCBF1B6261F235F00D2A11C /* Main.storyboard */,
 				DBCBF1B9261F236000D2A11C /* Assets.xcassets */,
 				DBCBF1BB261F236000D2A11C /* LaunchScreen.storyboard */,
 				DBCBF1BE261F236000D2A11C /* Info.plist */,
-				DBCBF1C5261F23CF00D2A11C /* CoffeeShops.swift */,
-				DBB92A0E268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift */,
-				DBB92A1026847BBC0072B7BA /* CoffeeShopCollectionViewCell.swift */,
-				DBC66378268CAD950050144B /* CoffeeShopsInfoController.swift */,
 			);
 			path = CoffeeMap;
 			sourceTree = "<group>";

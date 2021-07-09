@@ -21,7 +21,6 @@ class CoffeeShopsInfoController {
                 do {
                     let shopsInfo = try jsonDecoder.decode(Shops.self, from: data)
                     CoffeeShopsInfoController.coffeeShops = shopsInfo.coffeeShops
-                    print(shopsInfo.coffeeShops.count)
                     completion(.success(shopsInfo.coffeeShops))
                 } catch {
                     completion(.failure(error))
