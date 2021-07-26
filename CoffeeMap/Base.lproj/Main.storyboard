@@ -22,29 +22,59 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" restorationIdentifier="CoffeeDetailsView" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-eE-dxx" customClass="CoffeeShopDetailsView" customModule="CoffeeMap" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="196" width="414" height="627"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZg-Nb-PKE">
+                                <rect key="frame" x="0.0" y="186" width="414" height="627"/>
+                                <subviews>
+                                    <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekZ-RD-UKZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <items>
+                                            <navigationItem title="Title" id="HYJ-dF-Ads">
+                                                <barButtonItem key="rightBarButtonItem" title="Item" image="xmark.circle" catalog="system" id="iRZ-rF-aRQ">
+                                                    <connections>
+                                                        <action selector="closeDetailsButtonTapped:" destination="BYZ-38-t0r" id="R5k-gq-CoM"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <view contentMode="scaleToFill" restorationIdentifier="CoffeeDetailsView" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-eE-dxx" customClass="CoffeeShopDetailsView" customModule="CoffeeMap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="583"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <gestureRecognizers/>
+                                    </view>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="4Qs-ID-O9l"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="ekZ-RD-UKZ" firstAttribute="top" secondItem="NZg-Nb-PKE" secondAttribute="top" id="49u-AE-Thw"/>
+                                    <constraint firstItem="ozX-eE-dxx" firstAttribute="leading" secondItem="4Qs-ID-O9l" secondAttribute="leading" id="GHa-9f-Ugv"/>
+                                    <constraint firstItem="ekZ-RD-UKZ" firstAttribute="trailing" secondItem="NZg-Nb-PKE" secondAttribute="trailing" id="VAg-PH-OQC"/>
+                                    <constraint firstItem="ozX-eE-dxx" firstAttribute="top" secondItem="ekZ-RD-UKZ" secondAttribute="bottom" id="cvh-Df-GtE"/>
+                                    <constraint firstItem="ozX-eE-dxx" firstAttribute="trailing" secondItem="4Qs-ID-O9l" secondAttribute="trailing" id="ge9-uB-DF3"/>
+                                    <constraint firstItem="ekZ-RD-UKZ" firstAttribute="leading" secondItem="NZg-Nb-PKE" secondAttribute="leading" id="iqx-hr-q4A"/>
+                                    <constraint firstItem="ozX-eE-dxx" firstAttribute="bottom" secondItem="4Qs-ID-O9l" secondAttribute="bottom" id="o4J-DM-CJ3"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ozX-eE-dxx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3FL-WZ-dRb"/>
-                            <constraint firstItem="ozX-eE-dxx" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.7" id="HlE-aH-zix"/>
-                            <constraint firstItem="bys-e8-eLD" firstAttribute="centerX" secondItem="ozX-eE-dxx" secondAttribute="centerX" id="M5O-QE-xcP"/>
+                            <constraint firstItem="NZg-Nb-PKE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2dh-Iw-4Uc"/>
+                            <constraint firstItem="bys-e8-eLD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5TM-uZ-Qpo"/>
+                            <constraint firstItem="NZg-Nb-PKE" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.7" id="Z5A-yc-rXL"/>
+                            <constraint firstItem="NZg-Nb-PKE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cQG-Me-9dB"/>
+                            <constraint firstItem="NZg-Nb-PKE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fLg-CV-XPO"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="hqm-GI-1XM"/>
-                            <constraint firstItem="ozX-eE-dxx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="10" id="iFM-bK-jzV"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="if8-Tx-Dqw"/>
-                            <constraint firstItem="ozX-eE-dxx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lA8-w6-ocI"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xNu-k5-GEV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="R02-HM-Vss"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="coffeeDetailsView" destination="ozX-eE-dxx" id="87U-9F-GXE"/>
+                        <outlet property="coffeeDetailsNavigationBar" destination="ekZ-RD-UKZ" id="ytP-Ss-ED2"/>
+                        <outlet property="coffeeDetailsView" destination="NZg-Nb-PKE" id="AL9-2b-ReC"/>
+                        <outlet property="coffeeShopDetailsView" destination="ozX-eE-dxx" id="PoI-3b-aa9"/>
                         <outlet property="mapMainView" destination="bys-e8-eLD" id="21I-ee-A08"/>
                     </connections>
                 </viewController>
@@ -59,7 +89,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="y51-qc-jqj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="Agi-TN-MQ1">
                             <size key="itemSize" width="406" height="173"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -112,7 +142,7 @@
                                         <constraint firstItem="7c7-Pp-P5G" firstAttribute="leading" secondItem="bTK-ih-JdZ" secondAttribute="leading" constant="8" id="v6w-Ig-iLa"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <color key="backgroundColor" red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="0.49278249172185429" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="customSize" width="364" height="173"/>
                                 <connections>
                                     <outlet property="addressLabel" destination="Bsi-5F-RYw" id="gEE-Fh-teC"/>
@@ -158,6 +188,7 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
