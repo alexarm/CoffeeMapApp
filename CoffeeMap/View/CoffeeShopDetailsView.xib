@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoffeeShopDetailsView" customModule="CoffeeMap" customModuleProvider="target">
+            <connections>
+                <outlet property="coffeeShopAddressLabel" destination="X4d-5b-r7D" id="sSN-Tc-TgB"/>
+                <outlet property="coffeeShopDescriptionLabel" destination="eAZ-PO-h4G" id="AFQ-Fv-3rN"/>
+                <outlet property="coffeeShopDetailsNavigationBar" destination="bZz-re-zaq" id="UHe-06-CRJ"/>
+                <outlet property="coffeeShopDiscountLabel" destination="AcN-oc-j6F" id="EjJ-kA-OH4"/>
+                <outlet property="coffeeShopImage" destination="oX1-eT-ivT" id="itF-6T-xqT"/>
+                <outlet property="coffeeShopInstagramText" destination="iSF-rL-kY9" id="obn-9V-gXE"/>
+                <outlet property="scrollView" destination="rb1-oP-wrp" id="8Kl-e5-jTj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="UP4-7f-Cal">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZz-re-zaq">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <items>
+                        <navigationItem title="Title" id="2NW-pX-x35">
+                            <barButtonItem key="rightBarButtonItem" title="Item" image="xmark.circle" catalog="system" id="G9X-R6-XSc"/>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-oP-wrp">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Y89-uB-DNK">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="434.5"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oX1-eT-ivT">
+                                    <rect key="frame" x="10" y="0.0" width="394" height="300"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="300" id="MGu-kB-viK"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAZ-PO-h4G">
+                                    <rect key="frame" x="20" y="310" width="374" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Instagram" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iSF-rL-kY9">
+                                    <rect key="frame" x="170" y="340.5" width="74.5" height="33"/>
+                                    <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                    <color key="textColor" systemColor="labelColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
+                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                </textView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcN-oc-j6F">
+                                    <rect key="frame" x="186.5" y="383.5" width="41.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4d-5b-r7D">
+                                    <rect key="frame" x="186.5" y="414" width="41.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="oX1-eT-ivT" secondAttribute="trailing" constant="10" id="8Sw-I1-dVP"/>
+                                <constraint firstAttribute="trailing" secondItem="eAZ-PO-h4G" secondAttribute="trailing" constant="20" id="POc-LH-Ua3"/>
+                                <constraint firstItem="oX1-eT-ivT" firstAttribute="leading" secondItem="Y89-uB-DNK" secondAttribute="leading" constant="10" id="nrS-6c-UeW"/>
+                                <constraint firstItem="eAZ-PO-h4G" firstAttribute="leading" secondItem="Y89-uB-DNK" secondAttribute="leading" constant="20" id="pgl-Pe-bkw"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Y89-uB-DNK" firstAttribute="leading" secondItem="rb1-oP-wrp" secondAttribute="leading" id="5mE-IU-RmM"/>
+                        <constraint firstItem="Y89-uB-DNK" firstAttribute="trailing" secondItem="rb1-oP-wrp" secondAttribute="trailing" id="XVk-U7-9rt"/>
+                        <constraint firstItem="Y89-uB-DNK" firstAttribute="top" secondItem="rb1-oP-wrp" secondAttribute="top" id="YAS-wJ-tkI"/>
+                        <constraint firstItem="Y89-uB-DNK" firstAttribute="bottom" secondItem="rb1-oP-wrp" secondAttribute="bottom" constant="-30" id="aGT-gm-mwJ"/>
+                        <constraint firstItem="Y89-uB-DNK" firstAttribute="width" secondItem="rb1-oP-wrp" secondAttribute="width" id="ccc-c8-RRS"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="RTA-6o-RRl"/>
+            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+            <constraints>
+                <constraint firstItem="rb1-oP-wrp" firstAttribute="bottom" secondItem="UP4-7f-Cal" secondAttribute="bottom" id="8hi-dM-Rsu"/>
+                <constraint firstItem="bZz-re-zaq" firstAttribute="trailing" secondItem="UP4-7f-Cal" secondAttribute="trailing" id="NiI-cI-Q8O"/>
+                <constraint firstItem="rb1-oP-wrp" firstAttribute="top" secondItem="bZz-re-zaq" secondAttribute="bottom" id="Tfg-FU-1cl"/>
+                <constraint firstItem="bZz-re-zaq" firstAttribute="leading" secondItem="UP4-7f-Cal" secondAttribute="leading" id="hAv-28-2AE"/>
+                <constraint firstItem="rb1-oP-wrp" firstAttribute="leading" secondItem="UP4-7f-Cal" secondAttribute="leading" id="hyi-aw-oXk"/>
+                <constraint firstItem="bZz-re-zaq" firstAttribute="top" secondItem="UP4-7f-Cal" secondAttribute="top" id="vzi-z3-F9K"/>
+                <constraint firstItem="rb1-oP-wrp" firstAttribute="trailing" secondItem="UP4-7f-Cal" secondAttribute="trailing" id="x48-Dr-Hbt"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="127.53623188405798" y="27.455357142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

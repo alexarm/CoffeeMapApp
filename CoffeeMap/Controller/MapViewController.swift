@@ -17,13 +17,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet var mapMainView: GMSMapView!
     
-    @IBOutlet var coffeeDetailsView: UIView!
-    @IBOutlet var coffeShopDetailsNavigationBar: UINavigationBar!
-    @IBOutlet var coffeeShopDescriptionLabel: UILabel!
-    @IBOutlet var coffeeShopDiscountLabel: UILabel!
-    @IBOutlet var coffeeShopAddressLabel: UILabel!
-    @IBOutlet var coffeeShopInstagramText: UITextView!
-    @IBOutlet var coffeeShopImage: UIImageView!
+    @IBOutlet var coffeeDetailsView: CoffeeShopDetailsView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,11 +57,11 @@ class MapViewController: UIViewController {
     }
     
     func setupNavigationBar() {
-        coffeShopDetailsNavigationBar.layer.cornerRadius = 10
-        coffeShopDetailsNavigationBar.clipsToBounds = true
-        coffeShopDetailsNavigationBar.isTranslucent = true
-        coffeShopDetailsNavigationBar.setBackgroundImage(UIImage(), for: .default)
-        coffeShopDetailsNavigationBar.shadowImage = UIImage()
+        coffeeDetailsView.coffeeShopDetailsNavigationBar.layer.cornerRadius = 10
+        coffeeDetailsView.coffeeShopDetailsNavigationBar.clipsToBounds = true
+        coffeeDetailsView.coffeeShopDetailsNavigationBar.isTranslucent = true
+        coffeeDetailsView.coffeeShopDetailsNavigationBar.setBackgroundImage(UIImage(), for: .default)
+        coffeeDetailsView.coffeeShopDetailsNavigationBar.shadowImage = UIImage()
     }
     
     func setupGestureRecognizers() {
@@ -76,7 +70,7 @@ class MapViewController: UIViewController {
         coffeeDetailsView.addGestureRecognizer(tapGesture)
         
         let openLinkTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openUrlByTap(_:)))
-        coffeeShopInstagramText.addGestureRecognizer(openLinkTapGestureRecognizer)
+        coffeeDetailsView.coffeeShopInstagramText.addGestureRecognizer(openLinkTapGestureRecognizer)
     }
     
     func addCoffeeShopsToMap(coffeeShops: [CoffeeShop]) {
@@ -94,8 +88,10 @@ class MapViewController: UIViewController {
     
     func showCoffeeShopDescription(from marker: GMSMarker) {
         let chosenCoffeeshop = CoffeeShopsInfoController.coffeeShops.filter {$0.name == marker.title}.first
-        coffeShopDetailsNavigationBar.topItem?.title = chosenCoffeeshop?.name
-        coffeeShopDescriptionLabel.text = chosenCoffeeshop?.description
+        coffeeDetailsView.coffeeShopDetailsNavigationBar.topItem?.title = chosenCoffeeshop?.name
+        coffeeDetailsView.scrollView.setContentOffset(.zero, animated: false)
+        
+        coffeeDetailsView.coffeeShopDescriptionLabel.text = chosenCoffeeshop?.description
         
         if let instagram = chosenCoffeeshop?.instagram {
             let instagramOpenText = "Открыть в Instagram"
@@ -107,19 +103,22 @@ class MapViewController: UIViewController {
             instagramLink.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: instagramOpenText.count))
             instagramLink.addAttribute(.link, value: instagram, range: NSRange(location: 0, length: instagramOpenText.count))
             
-            coffeeShopInstagramText.isUserInteractionEnabled = true
-            coffeeShopInstagramText.attributedText = instagramLink
+            coffeeDetailsView.coffeeShopInstagramText.isUserInteractionEnabled = true
+            coffeeDetailsView.coffeeShopInstagramText.attributedText = instagramLink
         }
         
-        coffeeShopAddressLabel.text = chosenCoffeeshop?.address
+        coffeeDetailsView.coffeeShopAddressLabel.text = chosenCoffeeshop?.address
         if let discount = chosenCoffeeshop?.discount {
             if !discount.isEmpty {
-                coffeeShopDiscountLabel.isHidden = false
-                coffeeShopDiscountLabel.text = "🌿 -\(discount)% в свою кружку"
+                coffeeDetailsView.coffeeShopDiscountLabel.isHidden = false
+                coffeeDetailsView.coffeeShopDiscountLabel.text = "🌿 -\(discount)% в свою кружку"
             } else {
-                coffeeShopDiscountLabel.isHidden = true
+                coffeeDetailsView.coffeeShopDiscountLabel.isHidden = true
             }
         }
+        
+        coffeeDetailsView.coffeeShopImage.layer.cornerRadius = 10
+        
         if let imageUrl = chosenCoffeeshop?.image {
             let encodedString = imageUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             let encodedUrl = URL(string: encodedString)!
@@ -128,7 +127,7 @@ class MapViewController: UIViewController {
                 let image = image ?? UIImage(systemName: "photo")
                 
                 DispatchQueue.main.async {
-                    self.coffeeShopImage.image = image
+                    self.coffeeDetailsView.coffeeShopImage.image = image
                 }
             }
         }

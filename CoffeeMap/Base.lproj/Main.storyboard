@@ -22,90 +22,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="scaleToFill" restorationIdentifier="CoffeeDetailsView" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-eE-dxx">
-                                <rect key="frame" x="0.0" y="269" width="414" height="627"/>
-                                <subviews>
-                                    <navigationBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRj-D4-XsH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                        <items>
-                                            <navigationItem title="Title" id="dph-us-67b">
-                                                <barButtonItem key="rightBarButtonItem" title="Item" image="xmark.circle" catalog="system" id="dEH-gg-WxZ">
-                                                    <connections>
-                                                        <action selector="closeDetailsButtonTapped:" destination="BYZ-38-t0r" id="scf-0M-Cro"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zuz-nf-gvK">
-                                        <rect key="frame" x="10" y="46" width="394" height="458"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="97P-G7-nYf">
-                                                <rect key="frame" x="0.0" y="2.5" width="394" height="216"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="97P-G7-nYf" secondAttribute="height" multiplier="16:9" id="C8K-lp-VBf"/>
-                                                </constraints>
-                                                <imageReference key="image" image="photo" catalog="system" symbolScale="small"/>
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="3Nc-xP-swY">
-                                                <rect key="frame" x="0.0" y="226.5" width="394" height="139"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Instagram" textAlignment="center" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKN-1Q-dI8">
-                                                <rect key="frame" x="0.0" y="370.5" width="394" height="36.5"/>
-                                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
-                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                            </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzx-tY-xYK">
-                                                <rect key="frame" x="0.0" y="412" width="394" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ja4-Ag-Wbg">
-                                                <rect key="frame" x="0.0" y="437.5" width="394" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="97P-G7-nYf" firstAttribute="width" secondItem="Zuz-nf-gvK" secondAttribute="width" id="o26-WH-e8C"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
+                            <view contentMode="scaleToFill" restorationIdentifier="CoffeeDetailsView" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-eE-dxx" customClass="CoffeeShopDetailsView" customModule="CoffeeMap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="196" width="414" height="627"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="Zuz-nf-gvK" firstAttribute="leading" secondItem="ozX-eE-dxx" secondAttribute="leading" constant="10" id="2Yk-iw-Og0"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zuz-nf-gvK" secondAttribute="bottom" constant="123" id="7iq-Zo-Q8H"/>
-                                    <constraint firstItem="qRj-D4-XsH" firstAttribute="top" secondItem="ozX-eE-dxx" secondAttribute="top" id="D1j-3y-5ij"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zuz-nf-gvK" secondAttribute="trailing" constant="10" id="NO7-HV-t1y"/>
-                                    <constraint firstItem="Zuz-nf-gvK" firstAttribute="top" secondItem="qRj-D4-XsH" secondAttribute="bottom" constant="2" id="bnY-Pr-iT8"/>
-                                    <constraint firstAttribute="trailing" secondItem="qRj-D4-XsH" secondAttribute="trailing" id="jag-dG-XbR"/>
-                                    <constraint firstItem="qRj-D4-XsH" firstAttribute="leading" secondItem="ozX-eE-dxx" secondAttribute="leading" id="xAy-yL-spA"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ozX-eE-dxx" secondAttribute="trailing" id="3FL-WZ-dRb"/>
+                            <constraint firstItem="ozX-eE-dxx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3FL-WZ-dRb"/>
                             <constraint firstItem="ozX-eE-dxx" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.7" id="HlE-aH-zix"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="centerX" secondItem="ozX-eE-dxx" secondAttribute="centerX" id="M5O-QE-xcP"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="hqm-GI-1XM"/>
-                            <constraint firstItem="ozX-eE-dxx" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="iFM-bK-jzV"/>
+                            <constraint firstItem="ozX-eE-dxx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="10" id="iFM-bK-jzV"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="if8-Tx-Dqw"/>
                             <constraint firstItem="ozX-eE-dxx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lA8-w6-ocI"/>
                             <constraint firstItem="bys-e8-eLD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xNu-k5-GEV"/>
@@ -114,13 +44,7 @@
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="R02-HM-Vss"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="coffeShopDetailsNavigationBar" destination="qRj-D4-XsH" id="zKM-iR-81K"/>
                         <outlet property="coffeeDetailsView" destination="ozX-eE-dxx" id="87U-9F-GXE"/>
-                        <outlet property="coffeeShopAddressLabel" destination="ja4-Ag-Wbg" id="Mih-YZ-86Z"/>
-                        <outlet property="coffeeShopDescriptionLabel" destination="3Nc-xP-swY" id="obj-1d-PQW"/>
-                        <outlet property="coffeeShopDiscountLabel" destination="Mzx-tY-xYK" id="Hzg-ye-ARy"/>
-                        <outlet property="coffeeShopImage" destination="97P-G7-nYf" id="pDb-MY-GSj"/>
-                        <outlet property="coffeeShopInstagramText" destination="EKN-1Q-dI8" id="EuG-OU-hok"/>
                         <outlet property="mapMainView" destination="bys-e8-eLD" id="21I-ee-A08"/>
                     </connections>
                 </viewController>
@@ -234,7 +158,6 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="xmark.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

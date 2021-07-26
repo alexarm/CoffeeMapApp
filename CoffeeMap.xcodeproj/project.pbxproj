@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB1EE61826AEA0E100DC89BD /* CoffeeShopDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1EE61726AEA0E100DC89BD /* CoffeeShopDetailsView.swift */; };
+		DB1EE61C26AEA13900DC89BD /* CoffeeShopDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1EE61B26AEA13900DC89BD /* CoffeeShopDetailsView.xib */; };
 		DBB92A0F268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB92A0E268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift */; };
 		DBB92A1126847BBC0072B7BA /* CoffeeShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB92A1026847BBC0072B7BA /* CoffeeShopCollectionViewCell.swift */; };
 		DBC66379268CAD950050144B /* CoffeeShopsInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC66378268CAD950050144B /* CoffeeShopsInfoController.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		45DE9A39E27343CEE8DD4F4A /* Pods-CoffeeMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.release.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.release.xcconfig"; sourceTree = "<group>"; };
 		A251D338531922AE86DF7574 /* Pods-CoffeeMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoffeeMap.debug.xcconfig"; path = "Target Support Files/Pods-CoffeeMap/Pods-CoffeeMap.debug.xcconfig"; sourceTree = "<group>"; };
+		DB1EE61726AEA0E100DC89BD /* CoffeeShopDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopDetailsView.swift; sourceTree = "<group>"; };
+		DB1EE61B26AEA13900DC89BD /* CoffeeShopDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoffeeShopDetailsView.xib; sourceTree = "<group>"; };
 		DBB92A0E268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoffeeShopsCollectionViewController.swift; sourceTree = "<group>"; };
 		DBB92A1026847BBC0072B7BA /* CoffeeShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBC66378268CAD950050144B /* CoffeeShopsInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsInfoController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 				45DE9A39E27343CEE8DD4F4A /* Pods-CoffeeMap.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB1EE61226AE9DAD00DC89BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB1EE61726AEA0E100DC89BD /* CoffeeShopDetailsView.swift */,
+				DB1EE61B26AEA13900DC89BD /* CoffeeShopDetailsView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DBC6637A2695CCD20050144B /* Controller */ = {
@@ -109,6 +122,7 @@
 		DBCBF1AF261F235F00D2A11C /* CoffeeMap */ = {
 			isa = PBXGroup;
 			children = (
+				DB1EE61226AE9DAD00DC89BD /* View */,
 				DBC6637B2695CD140050144B /* Model */,
 				DBC6637A2695CCD20050144B /* Controller */,
 				DBCBF1B0261F235F00D2A11C /* AppDelegate.swift */,
@@ -189,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBCBF1BD261F236000D2A11C /* LaunchScreen.storyboard in Resources */,
+				DB1EE61C26AEA13900DC89BD /* CoffeeShopDetailsView.xib in Resources */,
 				DBCBF1BA261F236000D2A11C /* Assets.xcassets in Resources */,
 				DBCBF1B8261F235F00D2A11C /* Main.storyboard in Resources */,
 			);
@@ -244,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB92A0F268470EB0072B7BA /* ListCoffeeShopsCollectionViewController.swift in Sources */,
+				DB1EE61826AEA0E100DC89BD /* CoffeeShopDetailsView.swift in Sources */,
 				DBCBF1B5261F235F00D2A11C /* MapViewController.swift in Sources */,
 				DBCBF1C6261F23CF00D2A11C /* CoffeeShops.swift in Sources */,
 				DBCBF1B1261F235F00D2A11C /* AppDelegate.swift in Sources */,
@@ -402,7 +418,7 @@
 				DEVELOPMENT_TEAM = Q9Z2P7G9Y2;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = CoffeeMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -427,7 +443,7 @@
 				DEVELOPMENT_TEAM = Q9Z2P7G9Y2;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = CoffeeMap/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
